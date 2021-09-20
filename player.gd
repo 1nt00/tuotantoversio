@@ -6,7 +6,7 @@ const GRAVITY = 40
 var JUMPFORCE = -800
 var isPlayerDead = false
 var hasJumpBoots = false
-
+var watchingright = true
 
 func _physics_process(delta):
 	
@@ -20,32 +20,38 @@ func _physics_process(delta):
 		
 	#kun paientaan "oikealle" niin hahmo liikkuu oikealle
 		if Input.is_action_pressed("right"):
+			watchingright = true
 			velocity.x = SPEED
-			
 			#jos pelaajalla on jump boots -kengät, niin sprite on erilainen
 			if hasJumpBoots == true:
 				$Sprite.play("Walk2")
 			else: 
 				$Sprite.play("Walk")
-		
-		
+			
 	#kun paientaan "vasemmalle" niin hahmo liikkuu vasemmalle
 		elif Input.is_action_pressed("left"):
 			velocity.x = -SPEED
 			$Sprite.play("WalkLeft")
-		
+			watchingright = false
+			
 	#kun paientaan "alas" niin hahmo menee kyykkyyn
 		elif Input.is_action_pressed("down"):
 			$Sprite.play("Crouch")
 		
 		
 	#mitään ei paineta, hahmo palaa alkuasentoon
-		else:
+		elif watchingright == true:
 			$Sprite.play("Idle")
+		elif watchingright == false:
+			$Sprite.play("Idle2")
 	
 	#jos hahmo on ilmassa, tositetaan "air -animaatio"
 		if not is_on_floor():
-			$Sprite.play("Air")
+			
+			if watchingright == true: 
+				$Sprite.play("Air")
+			if watchingright == false:
+				$Sprite.play("AirL")		
 		
 		elif not is_on_floor() and Input.is_action_pressed("left"):
 			$Sprite.play("Air")
@@ -86,3 +92,11 @@ func _on_itemJumpBoot_body_entered(body):
 	
 func _on_Door_body_entered(body):
 	get_tree().change_scene("res://Level2.tscn")
+
+
+
+#kun _cameraZoomArealta poistutaan, niin kameran zoom-arvo muuttuu
+func _on_cameraZoomArea_body_exited(body):
+	$Camera2D.zoom.x = 0.8
+	$Camera2D.zoom.y = 0.8
+	

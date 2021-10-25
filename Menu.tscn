@@ -1,0 +1,140 @@
+[gd_scene load_steps=16 format=2]
+
+[ext_resource path="res://startButton.gd" type="Script" id=1]
+[ext_resource path="res://CanvasLayer.gd" type="Script" id=2]
+[ext_resource path="res://Menu.tres" type="StyleBox" id=3]
+
+[sub_resource type="StyleBoxFlat" id=1]
+bg_color = Color( 0.247059, 0.101961, 0.101961, 1 )
+border_width_top = 30
+border_width_bottom = 30
+border_color = Color( 0, 0, 0, 1 )
+
+[sub_resource type="DynamicFontData" id=2]
+font_path = "res://Acme-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=3]
+size = 200
+outline_size = 20
+outline_color = Color( 0, 0, 0, 1 )
+extra_spacing_char = 10
+font_data = SubResource( 2 )
+
+[sub_resource type="DynamicFontData" id=4]
+font_path = "res://Acme-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=5]
+font_data = SubResource( 4 )
+
+[sub_resource type="Theme" id=6]
+default_font = SubResource( 5 )
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://Acme-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 166
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 7 )
+
+[sub_resource type="Theme" id=9]
+
+[sub_resource type="StyleBoxFlat" id=10]
+bg_color = Color( 0.65098, 0.65098, 0.65098, 1 )
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFontData" id=11]
+font_path = "res://Acme-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=12]
+size = 166
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 11 )
+
+[node name="Menu" type="Node2D"]
+
+[node name="Camera2D" type="Camera2D" parent="."]
+current = true
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 2 )
+
+[node name="Background" type="Panel" parent="CanvasLayer"]
+margin_right = 1600.0
+margin_bottom = 896.0
+custom_styles/panel = SubResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="gameName" type="Label" parent="CanvasLayer/Background"]
+margin_left = 256.0
+margin_top = 128.0
+margin_right = 1339.0
+margin_bottom = 382.0
+custom_fonts/font = SubResource( 3 )
+custom_colors/font_color = Color( 0.721569, 0.505882, 0.298039, 1 )
+text = "CaveXplorer"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="startButton" type="Panel" parent="CanvasLayer/Background"]
+margin_left = 128.0
+margin_top = 384.0
+margin_right = 704.0
+margin_bottom = 768.0
+theme = SubResource( 6 )
+custom_styles/panel = ExtResource( 3 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="startText" type="Label" parent="CanvasLayer/Background/startButton"]
+margin_left = 64.0
+margin_top = 96.0
+margin_right = 513.0
+margin_bottom = 521.0
+custom_fonts/font = SubResource( 8 )
+text = "START
+"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exitButton" type="Panel" parent="CanvasLayer/Background"]
+margin_left = 896.0
+margin_top = 384.0
+margin_right = 1472.0
+margin_bottom = 768.0
+theme = SubResource( 9 )
+custom_styles/panel = SubResource( 10 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="exitText" type="Label" parent="CanvasLayer/Background/exitButton"]
+margin_left = 128.0
+margin_top = 96.0
+margin_right = 440.0
+margin_bottom = 307.0
+custom_fonts/font = SubResource( 12 )
+text = "EXIT"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="CanvasLayer/Background/startButton" to="CanvasLayer/Background/startButton" method="_on_startButton_gui_input"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/startButton" to="CanvasLayer" method="_on_startButton_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Background/startButton" to="CanvasLayer" method="_on_startButton_mouse_exited"]
+[connection signal="gui_input" from="CanvasLayer/Background/exitButton" to="CanvasLayer" method="_on_exitButton_gui_input"]

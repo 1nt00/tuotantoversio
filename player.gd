@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var velocity = Vector2(0,0)
 var SPEED = 370
-const GRAVITY = 40
+var GRAVITY = 40
 var JUMPFORCE = -800
 var isPlayerDead = false
 var hasJumpBoots = false
@@ -64,27 +64,15 @@ func _physics_process(delta):
 			$Sprite.play("Jump")
 	
 		
-		
+		#Kun hahmo on seinällä, voi hypätä
 		if Input.is_action_just_pressed("jump") and is_on_wall():
 			velocity.y = JUMPFORCE
 			$Sprite.play("Jump")
 		
 		
-	 
-		
 	velocity = move_and_slide(velocity, Vector2.UP)
 
 	velocity.x = lerp(velocity.x,0,0.2)
-
-
-
-
-func _on_hazard_body_entered(body):					# 1. kun pelaaja koskettaa "hazard"-hitboxia, niin: 
-	isPlayerDead = true								# 2. pelaaja "kuolee"
-	$Label.text = "KUOLIT"							# 3. Näytölle tulee teksti "KUOLIT"
-	$Timer.start(1.0); yield($Timer, "timeout") 	# 4. Käynnistetään sekunnin ajastin, jonka jälkeen: ->
-	get_tree().change_scene("res://gameover.tscn")	# 5. taso ladataan alusta
-
 
 func _on_itemJumpBoot_body_entered(body):
 	hasJumpBoots = true
@@ -95,8 +83,13 @@ func _on_Door_body_entered(body):
 
 
 
-#kun _cameraZoomArealta poistutaan, niin kameran zoom-arvo muuttuu
+#kun _cameraZoomArealta poistutaan, niin kutsutaan camera2D-noden
+# zoom_in funktiota, jossa kamera zoomaa pelaajasta kauemmaksi
 func _on_cameraZoomArea_body_exited(body):
-	$Camera2D.zoom.x = 0.8
-	$Camera2D.zoom.y = 0.8
-	
+	$Camera2D.zoom_in(position - $Camera2D.get_camera_position())
+
+
+func _on_Hazard_body_entered(body):					# 1. kun pelaaja koskettaa "hazard"-hitboxia, niin: 
+	isPlayerDead = true								# 2. pelaaja "kuolee"
+	$Timer.start(1.0); yield($Timer, "timeout") 	# 3. Käynnistetään sekunnin ajastin, jonka jälkeen: ->
+	get_tree().change_scene("res://Level1.tscn")	# 4. taso ladataan alusta

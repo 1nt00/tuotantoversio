@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/crack.mp3-8c8117fc7f466c4ce18dc0d836bdac7e.mp3str"
+
+[deps]
+
+source_file="res://Assets/crack.mp3"
+dest_files=[ "res://.import/crack.mp3-8c8117fc7f466c4ce18dc0d836bdac7e.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

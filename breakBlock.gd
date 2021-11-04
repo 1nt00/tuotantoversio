@@ -1,18 +1,12 @@
 extends Area2D
 
-
-func _ready():
-	pass
+	#kun pelaaja koskettaa palikan CollisionShape2D:tä, niin:
+func _on_Area2D_body_entered(_body):
 	
-
-
-
-func _on_Area2D_body_entered(body):
+	$Sprite.play("break")					#toistetaan hajoamis-animaatio
+	$AudioStreamPlayer2D.volume_db = 2.0	#Toistetaan ääniefekti
 	
-	$Sprite.play("break")
-	$AudioStreamPlayer2D.volume_db = 2.0
-	
-
 	$AudioStreamPlayer2D.play(0.0); yield($AudioStreamPlayer2D, "finished")
 	$AudioStreamPlayer2D.stop()
+	#Kun ääniefekti on päättynyt, koko palikka häviää.
 	queue_free()

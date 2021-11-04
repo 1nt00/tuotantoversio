@@ -31,8 +31,11 @@ func _physics_process(delta):
 	#kun paientaan "vasemmalle" niin hahmo liikkuu vasemmalle
 		elif Input.is_action_pressed("left"):
 			velocity.x = -SPEED
-			$Sprite.play("WalkLeft")
-			watchingright = false
+			if hasJumpBoots == true:
+				$Sprite.play("WalkLeft2")
+			else:
+				$Sprite.play("WalkLeft")
+				watchingright = false
 			
 	#kun paientaan "alas" niin hahmo menee kyykkyyn
 		elif Input.is_action_pressed("down"):
@@ -74,9 +77,8 @@ func _physics_process(delta):
 
 	velocity.x = lerp(velocity.x,0,0.2)
 
-func _on_itemJumpBoot_body_entered(body):
-	hasJumpBoots = true
-	JUMPFORCE = -1070
+
+	
 	
 func _on_Door_body_entered(body):
 	get_tree().change_scene("res://Level2.tscn")
@@ -93,3 +95,9 @@ func _on_Hazard_body_entered(body):					# 1. kun pelaaja koskettaa "hazard"-hitb
 	isPlayerDead = true								# 2. pelaaja "kuolee"
 	$Timer.start(1.0); yield($Timer, "timeout") 	# 3. Käynnistetään sekunnin ajastin, jonka jälkeen: ->
 	get_tree().change_scene("res://Level1.tscn")	# 4. taso ladataan alusta
+
+#kun kerätään hyppykengät, niin hyppyvoima ja juoksunopeus suurenee.
+func _on_jumpBoots_body_entered(body):	
+	hasJumpBoots = true
+	JUMPFORCE = -1070
+	SPEED = 390

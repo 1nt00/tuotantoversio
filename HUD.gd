@@ -1,7 +1,7 @@
 extends CanvasLayer
 
 var coins = 0
-var health = 3
+var health = 5
 
 func _ready():
 	

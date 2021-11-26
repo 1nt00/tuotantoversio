@@ -1,0 +1,132 @@
+[gd_scene load_steps=12 format=2]
+
+[ext_resource path="res://gameOver.gd" type="Script" id=1]
+[ext_resource path="res://new_styleboxflat.tres" type="StyleBox" id=2]
+
+[sub_resource type="StyleBoxFlat" id=9]
+bg_color = Color( 0.184314, 0, 0, 1 )
+
+[sub_resource type="DynamicFontData" id=1]
+font_path = "res://Acme-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=2]
+size = 100
+outline_size = 8
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 1 )
+
+[sub_resource type="DynamicFontData" id=3]
+font_path = "res://Acme-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=4]
+size = 65
+outline_size = 8
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://Acme-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
+size = 64
+outline_size = 8
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 5 )
+
+[sub_resource type="DynamicFontData" id=7]
+font_path = "res://Acme-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=8]
+size = 250
+outline_size = 16
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 7 )
+
+[node name="gameOver" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+script = ExtResource( 1 )
+
+[node name="Panel" type="Panel" parent="CanvasLayer"]
+margin_right = 1600.0
+margin_bottom = 904.0
+custom_styles/panel = SubResource( 9 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="retryButton" type="Panel" parent="CanvasLayer/Panel"]
+margin_left = 128.0
+margin_top = 616.0
+margin_right = 480.0
+margin_bottom = 808.0
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="retry" type="Label" parent="CanvasLayer/Panel/retryButton"]
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 286.0
+margin_bottom = 159.0
+custom_fonts/font = SubResource( 2 )
+text = "Retry"
+
+[node name="quitButton" type="Panel" parent="CanvasLayer/Panel"]
+margin_left = 1120.0
+margin_top = 616.0
+margin_right = 1472.0
+margin_bottom = 808.0
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="quit" type="Label" parent="CanvasLayer/Panel/quitButton"]
+margin_left = 32.0
+margin_top = 56.0
+margin_right = 320.0
+margin_bottom = 146.0
+custom_fonts/font = SubResource( 4 )
+text = "Quit  Game"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="menuButton" type="Panel" parent="CanvasLayer/Panel"]
+margin_left = 632.0
+margin_top = 616.0
+margin_right = 984.0
+margin_bottom = 808.0
+custom_styles/panel = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel/menuButton"]
+margin_left = 32.0
+margin_top = 56.0
+margin_right = 326.0
+margin_bottom = 139.0
+custom_fonts/font = SubResource( 6 )
+text = "Main  Menu"
+
+[node name="Label" type="Label" parent="CanvasLayer/Panel"]
+margin_left = 216.0
+margin_top = 192.0
+margin_right = 1387.0
+margin_bottom = 512.0
+custom_fonts/font = SubResource( 8 )
+custom_colors/font_color = Color( 0.619608, 0, 0, 1 )
+text = "Game Over!"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="gui_input" from="CanvasLayer/Panel/retryButton" to="CanvasLayer" method="_on_retryButton_gui_input"]
+[connection signal="mouse_exited" from="CanvasLayer/Panel/retryButton" to="CanvasLayer" method="_on_retryButton_mouse_exited"]
+[connection signal="gui_input" from="CanvasLayer/Panel/quitButton" to="CanvasLayer" method="_on_quitButton_gui_input"]
+[connection signal="mouse_exited" from="CanvasLayer/Panel/quitButton" to="CanvasLayer" method="_on_quitButton_mouse_exited"]
+[connection signal="gui_input" from="CanvasLayer/Panel/menuButton" to="CanvasLayer" method="_on_menuButton_gui_input"]
+[connection signal="mouse_exited" from="CanvasLayer/Panel/menuButton" to="CanvasLayer" method="_on_menuButton_mouse_exited"]

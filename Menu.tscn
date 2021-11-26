@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=2]
+[gd_scene load_steps=19 format=2]
 
 [ext_resource path="res://startButton.gd" type="Script" id=1]
 [ext_resource path="res://CanvasLayer.gd" type="Script" id=2]
@@ -6,41 +6,58 @@
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.247059, 0.101961, 0.101961, 1 )
-border_width_top = 30
-border_width_bottom = 30
 border_color = Color( 0, 0, 0, 1 )
 
-[sub_resource type="DynamicFontData" id=2]
+[sub_resource type="StyleBoxFlat" id=2]
+border_width_left = 20
+border_width_top = 20
+border_width_right = 20
+border_width_bottom = 20
+corner_radius_top_left = 30
+corner_radius_top_right = 30
+corner_radius_bottom_right = 30
+corner_radius_bottom_left = 30
+
+[sub_resource type="DynamicFontData" id=3]
 font_path = "res://Acme-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=3]
+[sub_resource type="DynamicFont" id=4]
+size = 70
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 3 )
+
+[sub_resource type="DynamicFontData" id=5]
+font_path = "res://Acme-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=6]
 size = 200
 outline_size = 20
 outline_color = Color( 0, 0, 0, 1 )
 extra_spacing_char = 10
-font_data = SubResource( 2 )
-
-[sub_resource type="DynamicFontData" id=4]
-font_path = "res://Acme-Regular.ttf"
-
-[sub_resource type="DynamicFont" id=5]
-font_data = SubResource( 4 )
-
-[sub_resource type="Theme" id=6]
-default_font = SubResource( 5 )
+font_data = SubResource( 5 )
 
 [sub_resource type="DynamicFontData" id=7]
 font_path = "res://Acme-Regular.ttf"
 
 [sub_resource type="DynamicFont" id=8]
-size = 166
-outline_size = 10
-outline_color = Color( 0, 0, 0, 1 )
 font_data = SubResource( 7 )
 
 [sub_resource type="Theme" id=9]
+default_font = SubResource( 8 )
 
-[sub_resource type="StyleBoxFlat" id=10]
+[sub_resource type="DynamicFontData" id=10]
+font_path = "res://Acme-Regular.ttf"
+
+[sub_resource type="DynamicFont" id=11]
+size = 110
+outline_size = 10
+outline_color = Color( 0, 0, 0, 1 )
+font_data = SubResource( 10 )
+
+[sub_resource type="Theme" id=12]
+
+[sub_resource type="StyleBoxFlat" id=13]
 bg_color = Color( 0.65098, 0.65098, 0.65098, 1 )
 border_width_left = 20
 border_width_top = 20
@@ -51,19 +68,16 @@ corner_radius_top_right = 30
 corner_radius_bottom_right = 30
 corner_radius_bottom_left = 30
 
-[sub_resource type="DynamicFontData" id=11]
+[sub_resource type="DynamicFontData" id=14]
 font_path = "res://Acme-Regular.ttf"
 
-[sub_resource type="DynamicFont" id=12]
-size = 166
+[sub_resource type="DynamicFont" id=15]
+size = 130
 outline_size = 10
 outline_color = Color( 0, 0, 0, 1 )
-font_data = SubResource( 11 )
+font_data = SubResource( 14 )
 
 [node name="Menu" type="Node2D"]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-current = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 script = ExtResource( 2 )
@@ -76,12 +90,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="howtoButton" type="Panel" parent="CanvasLayer/Background"]
+margin_left = 608.0
+margin_top = 384.0
+margin_right = 992.0
+margin_bottom = 608.0
+custom_styles/panel = SubResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="CanvasLayer/Background/howtoButton"]
+margin_left = 48.0
+margin_top = 24.0
+margin_right = 334.0
+margin_bottom = 207.0
+custom_fonts/font = SubResource( 4 )
+text = "HOW   TO
+PLAY"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [node name="gameName" type="Label" parent="CanvasLayer/Background"]
 margin_left = 256.0
-margin_top = 128.0
-margin_right = 1339.0
-margin_bottom = 382.0
-custom_fonts/font = SubResource( 3 )
+margin_top = 72.0
+margin_right = 1344.0
+margin_bottom = 326.0
+custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.721569, 0.505882, 0.298039, 1 )
 text = "CaveXplorer"
 __meta__ = {
@@ -89,11 +126,11 @@ __meta__ = {
 }
 
 [node name="startButton" type="Panel" parent="CanvasLayer/Background"]
-margin_left = 128.0
+margin_left = 96.0
 margin_top = 384.0
-margin_right = 704.0
-margin_bottom = 768.0
-theme = SubResource( 6 )
+margin_right = 480.0
+margin_bottom = 608.0
+theme = SubResource( 9 )
 custom_styles/panel = ExtResource( 3 )
 script = ExtResource( 1 )
 __meta__ = {
@@ -101,40 +138,44 @@ __meta__ = {
 }
 
 [node name="startText" type="Label" parent="CanvasLayer/Background/startButton"]
-margin_left = 64.0
-margin_top = 96.0
-margin_right = 513.0
-margin_bottom = 521.0
-custom_fonts/font = SubResource( 8 )
-text = "START
-"
+margin_left = 40.0
+margin_top = 40.0
+margin_right = 344.0
+margin_bottom = 180.0
+custom_fonts/font = SubResource( 11 )
+text = "START"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="exitButton" type="Panel" parent="CanvasLayer/Background"]
-margin_left = 896.0
+margin_left = 1120.0
 margin_top = 384.0
-margin_right = 1472.0
-margin_bottom = 768.0
-theme = SubResource( 9 )
-custom_styles/panel = SubResource( 10 )
+margin_right = 1504.0
+margin_bottom = 616.0
+theme = SubResource( 12 )
+custom_styles/panel = SubResource( 13 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
 [node name="exitText" type="Label" parent="CanvasLayer/Background/exitButton"]
-margin_left = 128.0
-margin_top = 96.0
-margin_right = 440.0
-margin_bottom = 307.0
-custom_fonts/font = SubResource( 12 )
+margin_left = 64.0
+margin_top = 32.0
+margin_right = 312.0
+margin_bottom = 243.0
+custom_fonts/font = SubResource( 15 )
 text = "EXIT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[connection signal="gui_input" from="CanvasLayer/Background/howtoButton" to="CanvasLayer" method="_on_howtoButton_gui_input"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/howtoButton" to="CanvasLayer" method="_on_howtoButton_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Background/howtoButton" to="CanvasLayer" method="_on_howtoButton_mouse_exited"]
 [connection signal="gui_input" from="CanvasLayer/Background/startButton" to="CanvasLayer/Background/startButton" method="_on_startButton_gui_input"]
 [connection signal="mouse_entered" from="CanvasLayer/Background/startButton" to="CanvasLayer" method="_on_startButton_mouse_entered"]
 [connection signal="mouse_exited" from="CanvasLayer/Background/startButton" to="CanvasLayer" method="_on_startButton_mouse_exited"]
 [connection signal="gui_input" from="CanvasLayer/Background/exitButton" to="CanvasLayer" method="_on_exitButton_gui_input"]
+[connection signal="mouse_entered" from="CanvasLayer/Background/exitButton" to="CanvasLayer" method="_on_exitButton_mouse_entered"]
+[connection signal="mouse_exited" from="CanvasLayer/Background/exitButton" to="CanvasLayer" method="_on_exitButton_mouse_exited"]

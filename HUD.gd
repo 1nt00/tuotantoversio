@@ -2,16 +2,22 @@ extends CanvasLayer
 
 var coins = 0
 var health = 5
+var playerInPortal = false
+signal noHealth
 
 func _ready():
 	
+	
+	
 	if health <= 0:
-		get_tree().change_scene("res://Level1.tscn")
+		emit_signal("noHealth")
 	
 	#muuttujan coins lukumäärä tulee HUDiin
 	$Coins.text = String(coins)
 	$Lives.text = String(health)
-
+	
+	if playerInPortal == true and coins >= 2:
+		get_tree().change_scene("res://Level2.tscn")
 
 func _on_coin_collected():
 	coins = coins +1
@@ -22,8 +28,16 @@ func _on_coin_collected():
 
 
 func _on_enemy_playerHit():
+	$hurt2.play(0.0)
 	health = health -1
 	_ready()
 
 
-	
+
+func _on_Portal_body_entered(body):
+	playerInPortal = true
+	if playerInPortal == true and coins >= 2:
+		get_tree().change_scene("res://Level2.tscn")
+
+func _on_Portal_body_exited(body):
+	playerInPortal = false

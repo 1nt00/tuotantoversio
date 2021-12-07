@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=2]
+[gd_scene load_steps=20 format=2]
 
 [ext_resource path="res://startButton.gd" type="Script" id=1]
 [ext_resource path="res://CanvasLayer.gd" type="Script" id=2]
 [ext_resource path="res://Menu.tres" type="StyleBox" id=3]
+[ext_resource path="res://Assets/menuTheme.mp3" type="AudioStream" id=4]
 
 [sub_resource type="StyleBoxFlat" id=1]
 bg_color = Color( 0.247059, 0.101961, 0.101961, 1 )
@@ -84,7 +85,7 @@ script = ExtResource( 2 )
 
 [node name="Background" type="Panel" parent="CanvasLayer"]
 margin_right = 1600.0
-margin_bottom = 896.0
+margin_bottom = 900.0
 custom_styles/panel = SubResource( 1 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -115,9 +116,9 @@ __meta__ = {
 
 [node name="gameName" type="Label" parent="CanvasLayer/Background"]
 margin_left = 256.0
-margin_top = 72.0
+margin_top = 64.0
 margin_right = 1344.0
-margin_bottom = 326.0
+margin_bottom = 318.0
 custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0.721569, 0.505882, 0.298039, 1 )
 text = "CaveXplorer"
@@ -169,6 +170,11 @@ text = "EXIT"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
+volume_db = -4.0
+autoplay = true
 
 [connection signal="gui_input" from="CanvasLayer/Background/howtoButton" to="CanvasLayer" method="_on_howtoButton_gui_input"]
 [connection signal="mouse_entered" from="CanvasLayer/Background/howtoButton" to="CanvasLayer" method="_on_howtoButton_mouse_entered"]

@@ -1,0 +1,15 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+path="res://.import/speedsong.mp3-59a71db3b830a6ac04ba84f19c84bfe5.mp3str"
+
+[deps]
+
+source_file="res://Assets/speedsong.mp3"
+dest_files=[ "res://.import/speedsong.mp3-59a71db3b830a6ac04ba84f19c84bfe5.mp3str" ]
+
+[params]
+
+loop=false
+loop_offset=0

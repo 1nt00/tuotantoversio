@@ -9,6 +9,8 @@ signal keyInLock
 
 
 func _on_lock_body_entered(body):
+	#kun pelaajalla on avain, ja pelaaja on lukon hitboxissa,
+	#muuttuu lukon sprite, ja ovelle lähetetään signaali
 	if hasKey == true:
 		emit_signal("keyInLock")
 		$AudioStreamPlayer.play(0.0)

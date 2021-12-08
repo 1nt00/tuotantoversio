@@ -16,7 +16,7 @@ func _ready():
 	$Coins.text = String(coins)
 	$Lives.text = String(health)
 	
-	if playerInPortal == true and coins >= 2:
+	if playerInPortal == true and coins >= 9:
 		get_tree().change_scene("res://Level2.tscn")
 
 func _on_coin_collected():

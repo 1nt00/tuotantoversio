@@ -1111,7 +1111,7 @@ position = Vector2( 0, -32 )
 
 [node name="pelaaja" type="KinematicBody2D" parent="."]
 show_behind_parent = true
-position = Vector2( -176, 504 )
+position = Vector2( -160, 512 )
 script = ExtResource( 2 )
 __meta__ = {
 "_edit_group_": true

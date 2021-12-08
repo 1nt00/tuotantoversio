@@ -1190,8 +1190,8 @@ position = Vector2( 12512, 1216 )
 z_index = 2
 shape = SubResource( 35 )
 
-[connection signal="keyCollected" from="Area2D" to="lock" method="_on_Area2D_keyCollected"]
 [connection signal="keyCollected" from="Area2D" to="Hud" method="_on_Area2D_keyCollected"]
+[connection signal="keyCollected" from="Area2D" to="lock" method="_on_Area2D_keyCollected"]
 [connection signal="keyInLock" from="lock" to="door" method="_on_lock_keyInLock"]
 [connection signal="body_entered" from="Area2D2" to="pelaaja" method="_on_Area2D2_body_entered"]
 [connection signal="body_entered" from="Area2D4" to="pelaaja" method="_on_Area2D2_body_entered"]

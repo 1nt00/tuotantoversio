@@ -36,9 +36,9 @@ func _on_enemy_playerHit():
 #kun pelaaja on portaalin hitboxissa
 func _on_Portal_body_entered(body):
 	playerInPortal = true 
-	#jos pelaaja on portaalissa, ja kolikoita on 2, 
+	#jos pelaaja on portaalissa, ja kolikoita on 9, 
 	#niin vaihdetaan tasoa
-	if playerInPortal == true and coins >= 2:
+	if playerInPortal == true and coins >= 9:
 		get_tree().change_scene("res://Level2.tscn")
 
 func _on_Portal_body_exited(body):

@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://lock.gd" type="Script" id=1]
 [ext_resource path="res://Assets/world/brickLock.png" type="Texture" id=2]
 [ext_resource path="res://Assets/world/brickLock2.png" type="Texture" id=3]
+[ext_resource path="res://Assets/buttonPress.mp3" type="AudioStream" id=4]
 
 [sub_resource type="SpriteFrames" id=1]
 animations = [ {
@@ -40,5 +41,8 @@ shape = SubResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="RigidBody2D"]
 shape = SubResource( 3 )
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource( 4 )
 
 [connection signal="body_entered" from="." to="." method="_on_lock_body_entered"]

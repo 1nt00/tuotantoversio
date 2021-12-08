@@ -991,7 +991,7 @@ tracks/0/keys = {
 [node name="level1" type="Node2D"]
 
 [node name="doorOpenButton" parent="." instance=ExtResource( 43 )]
-position = Vector2( 11936, 1256 )
+position = Vector2( 11936, 1248 )
 
 [node name="Path2D" type="Path2D" parent="."]
 position = Vector2( 3552, 2320 )

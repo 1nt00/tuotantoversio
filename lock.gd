@@ -11,6 +11,7 @@ signal keyInLock
 func _on_lock_body_entered(body):
 	if hasKey == true:
 		emit_signal("keyInLock")
+		$AudioStreamPlayer.play(0.0)
 		$AnimatedSprite.play("keyInLock")
 
 
